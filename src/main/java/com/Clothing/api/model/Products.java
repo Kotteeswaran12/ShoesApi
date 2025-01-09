@@ -7,8 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "prod")
 public class Products {
 
 	@Id
@@ -18,6 +20,7 @@ public class Products {
 	private String name;
 	private int price;
 	private double rating;
+	private boolean fav;
 	
 	@ElementCollection
 //	@Column(columnDefinition = "imageurl")
@@ -32,14 +35,17 @@ public class Products {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Products(int id, String name, int price, double rating, List<String> image) {
+	public Products(int id, String name, int price, double rating, List<String> image, boolean  fav) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.rating = rating;
 		this.image = image;
+		this.fav=fav;
 	}
+
+	
 
 	public int getId() {
 		return id;
@@ -80,6 +86,14 @@ public class Products {
 	public void setImage(List<String> image) {
 		this.image = image;
 	}
+
+    public boolean isFav() {
+        return fav;
+    }
+
+    public void setFav(boolean fav) {
+        this.fav = fav;
+    }
 	
 	
 	

@@ -3,8 +3,8 @@ package com.Clothing.api.productrepo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.Clothing.api.model.offer;
+import com.Clothing.api.model.Cart;
 @Repository
-public interface OfferRepo extends JpaRepository<offer, Integer>{
+public interface CartRepo  extends JpaRepository<Cart, Integer>{
     
 }

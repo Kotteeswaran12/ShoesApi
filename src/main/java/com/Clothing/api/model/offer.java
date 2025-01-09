@@ -8,39 +8,38 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
 
 @Entity
-@Table(name = "Offer")
-public class OfferProd {
-
+@Table(name="offer2")
+public class offer {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    private int price;
+
     private String name;
+    private int price;
     private double rating;
-
-    @Version
-    private int version;
-
+    private boolean fav;
+    
     @ElementCollection
-    // @Column(columnDefinition="Offerimage")
-    private List<String>image;
+    private List<String> img ;
 
-    public OfferProd(){
+
+    public offer(){
         super();
     }
 
-    public OfferProd(int id, int price, String name, double rating, List<String> image) {
+    public offer(int id, List<String> img, String name, int price, double rating) {
         this.id = id;
-        this.price = price;
+        this.img = img;
         this.name = name;
+        this.price = price;
         this.rating = rating;
-        this.image = image;
     }
 
-   
+    public offer(boolean fav) {
+        this.fav = fav;
+    }
 
     public int getId() {
         return id;
@@ -48,14 +47,6 @@ public class OfferProd {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public String getName() {
@@ -66,6 +57,14 @@ public class OfferProd {
         this.name = name;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public double getRating() {
         return rating;
     }
@@ -74,14 +73,21 @@ public class OfferProd {
         this.rating = rating;
     }
 
-    public List<String> getImage() {
-        return image;
+    public List<String> getImg() {
+        return img;
     }
 
-    public void setImage(List<String> image) {
-        this.image = image;
+    public void setImg(List<String> img) {
+        this.img = img;
+    }
+
+    public boolean isFav() {
+        return fav;
+    }
+
+    public void setFav(boolean fav) {
+        this.fav = fav;
     }
 
 
-    
 }

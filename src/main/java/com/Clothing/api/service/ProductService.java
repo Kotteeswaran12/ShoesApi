@@ -15,30 +15,35 @@ public class ProductService {
 	ProductRepo repo;
 
 	public List<Products> FindProducts() {
-		// TODO Auto-generated method stub
+		
 		return repo.findAll();
 	}
 
 	public Products AddProducts(Products prod) {
-		// TODO Auto-generated method stub
+		
 		return repo.save(prod);
 	}
 
 	public Products DeleteProdByid(int id) {
-		// TODO Auto-generated method stub
+		
 		 repo.deleteById(id);
 		 return null;
 	}
 
 	public Products Updateproduct( Products prod) {
-		// TODO Auto-generated method stub
+		
 		return repo.save(prod);
 	}
 
 	public Products GetProductByid(int id) {
-		// TODO Auto-generated method stub
+		
 		return repo.findById(id).orElse(null);
 	}
+
+    public List<Products> getByProductName(String keyword) {
+        
+        return repo.findAllByName(keyword);
+    }
 	
 	
 	

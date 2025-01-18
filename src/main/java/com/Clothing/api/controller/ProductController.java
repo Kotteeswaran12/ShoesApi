@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Clothing.api.model.Products;
 import com.Clothing.api.service.ProductService;
-import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -37,11 +38,7 @@ public class ProductController {
 	public Products AddProducts(@RequestBody Products prod) {
 		return service.AddProducts(prod);
 	}
-//	
-//	@DeleteMapping("/products/${id}")
-//	public Products DeleteProdByid (@PathVariable int id) {
-//		return  service.DeleteProdByid(id);
-//	}
+
 
 	@DeleteMapping("/products/{id}")
 	public Products deleteProductsid(@PathVariable int id) {
@@ -50,8 +47,14 @@ public class ProductController {
 	
 	@PutMapping("/products")
 	public Products Updateproduct( @RequestBody Products Prod) {
-		//TODO: process PUT request
+		
 		
 		return service.Updateproduct(Prod);
 	}
+	@GetMapping("/products/search")
+	public List<Products> getByProductName( String keyword) {
+		
+		return service.getByProductName (keyword);
+	}
+	
 }
